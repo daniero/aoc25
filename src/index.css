@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
 .banner {
+  position: relative;
   background-color: rgb(27, 22, 22);
   background-image: repeating-linear-gradient(
     to bottom,
@@ -9,4 +10,14 @@
     rgb(27, 22, 22) 18px,
     rgb(56, 46, 46) 18px
   );
+}
+
+.active.triangle::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid var(--color-orange-100);
 }

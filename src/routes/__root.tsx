@@ -1,7 +1,12 @@
-import { Header } from './components/Header.tsx';
-import { Nav } from './components/Nav.tsx';
+import { createRootRoute, Outlet } from '@tanstack/react-router';
+import { Nav } from '../components/Nav.tsx';
+import { Header } from '../components/Header.tsx';
 
-export function App() {
+export const Route = createRootRoute({
+  component: RootComponent,
+});
+
+function RootComponent() {
   return (
     <div className="flex flex-col min-h-screen">
       <div className="banner">
@@ -12,7 +17,7 @@ export function App() {
       </div>
       <div className="flex-1 pt-2 pb-3 bg-orange-100">
         <div className="w-full max-w-5xl m-auto mt-7 text-xl px-5">
-          Hello there!
+          <Outlet />
         </div>
       </div>
     </div>
