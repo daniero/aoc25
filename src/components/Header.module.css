@@ -1,74 +1,91 @@
 .logo {
-    --xred: #b31220;
-    --xgreen: #419a34;
-    --bg-size: 200%;
-    font-size: 28px;
+  --xred: #b31220;
+  --xgreen: #419a34;
+  --bg-size: 200%;
+  font-size: 28px;
 
-    color: white;
-    &:link {
-        text-decoration: none;
-    }
-    &:hover {
-        text-decoration: underline;
-    }
+  color: var(--color-orange-100);
+  &:link {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: white;
+  }
 
-    @media (max-width: 600px) {
-        font-size: clamp(10px, 5.8vw, 28px);
-    }
+  @media (max-width: 600px) {
+    font-size: clamp(10px, 5.8vw, 28px);
+  }
 
+  .aoc {
+    font-family:
+      HELLO Holidays,
+      serif;
+    font-size: 2.5em;
+  }
+
+  .y23 {
+    display: inline-block;
+    font-size: 1em;
+    transform: rotate(-10deg) translate(6px, -23px);
+  }
+
+  &:hover {
     .aoc {
-        font-family: HELLO Holidays, serif;
-        font-size: 2.5em;
+      background: linear-gradient(
+          70deg,
+          var(--xred) 0%,
+          var(--xred) 50%,
+          #ff9900 55%,
+          var(--xgreen) 60%,
+          var(--xgreen) 75%,
+          #ff9900 80%,
+          var(--xred) 85%,
+          var(--xred) 100%
+        )
+        0 0 / var(--bg-size) 100%;
+      color: transparent;
+      background-clip: text;
+      animation: move-bg 2s ease-in-out infinite;
+      animation-play-state: running;
     }
 
     .y23 {
-        display: inline-block;
-        font-size: 1em;
-        transform: rotate(-10deg) translate(6px, -23px);
+      text-shadow:
+        0 0 5px #ffa500,
+        0 0 15px #ffa500,
+        0 0 20px #ffa500,
+        0 0 40px #ffa500,
+        0 0 60px #ff0000,
+        0 0 10px #ff8d00,
+        0 0 98px #ff0000;
+      color: #fff6a9;
     }
-
-    &:hover {
-        .aoc {
-            background: linear-gradient(
-                    70deg,
-                    var(--xred) 0%,
-                    var(--xred) 50%,
-                    #ff9900 55%,
-                    var(--xgreen) 60%,
-                    var(--xgreen) 75%,
-                    #ff9900 80%,
-                    var(--xred) 85%,
-                    var(--xred) 100%
-            ) 0 0 / var(--bg-size) 100%;
-            color: transparent;
-            background-clip: text;
-            animation: move-bg 2s ease-in-out infinite;
-            animation-play-state: running;
-        }
-
-        .y23 {
-            text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
-            color: #fff6a9;
-        }
-    }
-
+  }
 }
 
 @keyframes move-bg {
-    to {
-        background-position: var(--bg-size) 0;
-    }
+  to {
+    background-position: var(--bg-size) 0;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    .aoc:hover {
-        animation: none;
-    }
+  .aoc:hover {
+    animation: none;
+  }
 }
 
 .fancySolution {
-    box-shadow: 0 0 10px rgba(230, 100, 75, 0.15);
-    &:hover {
-        box-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
-    }
+  box-shadow: 0 0 10px rgba(230, 100, 75, 0.15);
+  &:hover {
+    box-shadow:
+      0 0 5px #ffa500,
+      0 0 15px #ffa500,
+      0 0 20px #ffa500,
+      0 0 40px #ffa500,
+      0 0 60px #ff0000,
+      0 0 10px #ff8d00,
+      0 0 98px #ff0000;
+  }
 }
