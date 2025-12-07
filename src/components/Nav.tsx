@@ -2,10 +2,10 @@ import { clsx } from 'clsx/lite';
 import { Link } from '@tanstack/react-router';
 
 const days = [
-  { n: 1, href: '/day-01', done: 1 },
-  { n: 2, href: '/day-02', done: 1 },
+  { n: 1, href: '/day-01', done: 0 },
+  { n: 2, href: '/day-02', done: 0 },
   { n: 3, href: '/day-03', done: 0 },
-  { n: 4, href: '/day-04', done: 0 },
+  { n: 4, href: '/day-04', done: 1 },
   { n: 5, href: '/day-05', done: 0 },
   { n: 6, href: '/day-06', done: 0 },
   { n: 7, href: '/day-07', done: 0 },
@@ -23,7 +23,7 @@ export function Nav() {
 
   return (
     <nav className="text-white">
-      <ul className="flex gap-0">
+      <ul className="flex gap-0 -ml-2">
         {days.map(({ n, href, done }) => (
           <li key={href}>
             {done !== 0 ? (
