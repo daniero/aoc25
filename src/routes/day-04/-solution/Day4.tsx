@@ -1,30 +1,47 @@
-import { useEffect, useRef, useState } from 'react';
-import inputTxt from './input.txt';
+import { useEffect, useEffectEvent, useRef, useState } from 'react';
+import inputTxt from './input.txt?raw';
+import type { Message } from './Message.ts';
 
 export function Day4() {
   const [input, setInput] = useState(inputTxt);
-
   const canvas = useRef<HTMLCanvasElement>(null);
+  const worker = useRef<Worker>(null);
+
+  const init = useEffectEvent(
+    (
+      worker: Worker,
+      offscreenCanvas: OffscreenCanvas,
+      c: HTMLCanvasElement,
+    ) => {
+      worker.postMessage(
+        {
+          type: 'init',
+          canvas: offscreenCanvas,
+          width: c.width,
+          height: c.height,
+          input,
+        } satisfies Message,
+        [offscreenCanvas],
+      );
+    },
+  );
 
   useEffect(() => {
-    console.log('eff');
-    const worker = new Worker(new URL('worker.ts', import.meta.url));
-    if (canvas.current == null) return;
+    const c = canvas.current;
+    if (!c || worker.current) return;
 
-    const context = canvas.current.getContext('2d')!;
-    context.clearRect(0, 0, 1000, 1000);
-    context.fillStyle = '#fff';
-    context.lineWidth = 2;
-    context.fillRect(
-      Math.random() * 100,
-      Math.random() * 100,
-      Math.random() * 100,
-      Math.random() * 100,
-    );
+    const zoom = window.devicePixelRatio * window.visualViewport!.scale;
+    c.width = c.clientWidth * zoom;
+    c.height = c.clientHeight * zoom;
+
+    const offscreenCanvas = c.transferControlToOffscreen();
+    worker.current = new Worker(new URL('worker.ts', import.meta.url));
+    init(worker.current, offscreenCanvas, c);
+
     return () => {
-      worker.terminate();
+      worker.current!.terminate();
     };
-  }, [input]);
+  }, []);
 
   return (
     <>
@@ -49,9 +66,7 @@ export function Day4() {
         </div>
         <canvas
           ref={canvas}
-          className="bg-orange-950 text-white w-full"
-          width="480"
-          height="480"
+          className="bg-orange-950 text-white w-full aspect-square"
         />
       </div>
     </>
