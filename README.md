@@ -1,3 +1,3 @@
 # Advent of Code 2025
 
-Hey.
+Hey. https://aoc25.netlify.app/ :)
