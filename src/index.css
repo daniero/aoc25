@@ -21,3 +21,14 @@
   border-right: 6px solid transparent;
   border-bottom: 6px solid var(--color-orange-100);
 }
+
+.glow {
+  text-shadow:
+    0 0 8px #fff,
+    0 0 12px #fff,
+    0 0 16px #fff,
+    0 0 20px #fc0,
+    0 0 24px #fc0,
+    0 0 28px #fc0,
+    0 0 32px #fc0;
+}

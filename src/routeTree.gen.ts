@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TemplateIndexRouteImport } from './routes/template/index'
+import { Route as Day10IndexRouteImport } from './routes/day-10/index'
 import { Route as Day04IndexRouteImport } from './routes/day-04/index'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const TemplateIndexRoute = TemplateIndexRouteImport.update({
   path: '/template/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Day10IndexRoute = Day10IndexRouteImport.update({
+  id: '/day-10/',
+  path: '/day-10/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Day04IndexRoute = Day04IndexRouteImport.update({
   id: '/day-04/',
   path: '/day-04/',
@@ -32,30 +38,34 @@ const Day04IndexRoute = Day04IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/day-04': typeof Day04IndexRoute
+  '/day-10': typeof Day10IndexRoute
   '/template': typeof TemplateIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/day-04': typeof Day04IndexRoute
+  '/day-10': typeof Day10IndexRoute
   '/template': typeof TemplateIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/day-04/': typeof Day04IndexRoute
+  '/day-10/': typeof Day10IndexRoute
   '/template/': typeof TemplateIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/day-04' | '/template'
+  fullPaths: '/' | '/day-04' | '/day-10' | '/template'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/day-04' | '/template'
-  id: '__root__' | '/' | '/day-04/' | '/template/'
+  to: '/' | '/day-04' | '/day-10' | '/template'
+  id: '__root__' | '/' | '/day-04/' | '/day-10/' | '/template/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   Day04IndexRoute: typeof Day04IndexRoute
+  Day10IndexRoute: typeof Day10IndexRoute
   TemplateIndexRoute: typeof TemplateIndexRoute
 }
 
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemplateIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/day-10/': {
+      id: '/day-10/'
+      path: '/day-10'
+      fullPath: '/day-10'
+      preLoaderRoute: typeof Day10IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/day-04/': {
       id: '/day-04/'
       path: '/day-04'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   Day04IndexRoute: Day04IndexRoute,
+  Day10IndexRoute: Day10IndexRoute,
   TemplateIndexRoute: TemplateIndexRoute,
 }
 export const routeTree = rootRouteImport

@@ -47,7 +47,7 @@ export function DayX() {
     <>
       <h2 className="mb-5 text-2xl">Day 4</h2>
 
-      <div className="w-lg">
+      <div className="max-w-lg w-full">
         <div className="flex gap-2 justify-between mb-2">
           <button
             onClick={() => {

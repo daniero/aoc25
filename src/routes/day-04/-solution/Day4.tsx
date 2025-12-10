@@ -45,11 +45,13 @@ export function Day4() {
 
   return (
     <>
-      <h2 className="mb-5 text-2xl">Day 4</h2>
+      <h2 className="text-2xl">Day 4</h2>
+      <p className="text-orange-900 mb-5">Work in progress</p>
 
-      <div className="w-lg">
+      <div className="max-w-lg w-full">
         <div className="flex gap-2 justify-between mb-2">
           <button
+            className={'btn'}
             onClick={() => {
               setInput('');
             }}
