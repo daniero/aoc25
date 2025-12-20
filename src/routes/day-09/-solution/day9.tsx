@@ -2,7 +2,7 @@ import { useEffect, useEffectEvent, useRef, useState } from 'react';
 import inputTxt from './input.txt?raw';
 import type { Message } from './Message.ts';
 
-export function DayX() {
+export function Day9() {
   const [input, setInput] = useState(inputTxt);
   const canvas = useRef<HTMLCanvasElement>(null);
   const worker = useRef<Worker>(null);
@@ -35,7 +35,7 @@ export function DayX() {
     c.height = c.clientHeight * zoom;
 
     const offscreenCanvas = c.transferControlToOffscreen();
-    worker.current = new Worker(new URL('worker.ts', import.meta.url), {
+    worker.current = new Worker(new URL('./worker9.ts', import.meta.url), {
       type: 'module',
     });
     init(worker.current, offscreenCanvas, c);
@@ -47,7 +47,8 @@ export function DayX() {
 
   return (
     <>
-      <h2 className="mb-5 text-2xl">Day 4</h2>
+      <h2 className="text-2xl">Day 9</h2>
+      <p className="text-orange-900 mb-5">Work in progress</p>
 
       <div className="max-w-lg w-full">
         <div className="flex gap-2 justify-between mb-2">

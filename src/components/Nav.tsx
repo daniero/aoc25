@@ -10,7 +10,7 @@ const days = [
   { n: 6, href: '/day-06', done: 0 },
   { n: 7, href: '/day-07', done: 0 },
   { n: 8, href: '/day-08', done: 0 },
-  { n: 9, href: '/day-09', done: 0 },
+  { n: 9, href: '/day-09', done: 1 },
   { n: 10, href: '/day-10', done: 1 },
   { n: 11, href: '/day-11', done: 0 },
   { n: 12, href: '/day-12', done: 0 },
